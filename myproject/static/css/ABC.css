@@ -1,0 +1,269 @@
+#nav-bar{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #4CAF50;
+}
+.navbar-nav li{
+    padding: 0 10;
+}
+.navbar-nav li a{
+    float: right;
+    text-align: left;
+}
+.navbar-nav li .btn{
+    float: right;
+    text-align: left;
+}
+#nav-bar ul li a:hover{
+    color: #007bff!important;
+}
+navbar{
+    background: #21D0B2;
+}
+.navbar-toggler{
+    border: none!important;
+}
+.nav-link{
+    color: #555!important;
+    font-weight: 600;
+    font-size: 16px;
+}		
+form {
+    top: 200px;
+    left: 400px;
+    border: 3px solid #f1f1f1;
+    width: 520px;   
+    position: absolute; 
+    backface-visibility: 20%;
+    align-items: center;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.registerbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #2F455C;
+}
+
+.topleft {
+  position: absolute;
+  top: 120px;
+  left: 120px;
+  border: 3px solid #87ceeb;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+.form-content{
+    padding: 10%;
+    border: 5px solid #ced4da;
+    margin-bottom: 2%;
+    white-space: nowrap;
+}       
+
+/*contact*/
+#contact{
+background-color: transparent;
+background-size: cover;
+background-position: center;
+color: white;
+background-attachment: fixed;
+padding-top: 40px;
+padding-bottom: 40px;
+width: 600px;
+left: 300px;
+}
+
+/*delete*/
+#exampleModalDelete{
+background-color: transparent;
+background-size: cover;
+background-position: center;
+color: #efefef;
+background-attachment: fixed;
+padding-top: 40px;
+padding-bottom: 40px;
+}
+
+/*customer modal*/
+#customerModalView{
+background-color: transparent;
+background-size: cover;
+background-position: center;
+color: #efefef;
+background-attachment: fixed;
+padding-top: 40px;
+padding-bottom: 40px;
+width: 1000px;
+left: 200px;
+
+}
+
+/*about*/
+#about{
+background-color: transparent;
+background-size: cover;
+background-position: center;
+color: #efefef;
+background-attachment: fixed;
+padding-top: 40px;
+padding-bottom: 40px;
+}
+.modal-confirm {    
+color: #8e8e8e;
+width: 1000px;
+}
+.modal-confirm .modal-content {
+padding: 20px;
+border-radius: 5px;     
+border: none;
+background-color:#BBD6EC;
+margin-left: none;
+
+}
+.modal-confirm .modal-header {
+border-bottom: none;   
+position: relative;
+justify-content: left;
+border-radius: 5px 5px 0 0;
+}
+.modal-confirm h4 {
+color: #545557;
+text-align: center;
+font-size: 30px;
+margin: 0 0 25px;
+}
+.modal-confirm .form-control, .modal-confirm .btn {
+min-height: 40px;
+border-radius: 3px; 
+}
+.modal-confirm .close {
+background: #c0c3c8;
+position: absolute;
+top: 15px;
+right: 15px;
+color: #fff;
+text-shadow: none;
+opacity: 0.5;
+width: 30px;
+height: 30px;
+padding: 0;
+border-radius: 20px;
+font-size: 16px;
+}
+.modal-confirm .close:hover {
+opacity: 0.8;
+}
+.modal-confirm .icon-box {
+color: #f95858;     
+display: inline-block;
+z-index: 9;
+text-align: center;
+position: relative;
+transform: scale(1.5);
+}
+.modal-confirm .icon-box i:first-child {
+font-size: 100px;
+}
+.modal-confirm .icon-box i:nth-child(2) {
+font-size: 138px;
+position: absolute;
+left: -19px;
+top: -23px;
+font-weight: bold;
+color: #fff;
+}
+.modal-confirm .icon-box i:last-child {
+font-size: 26px;
+position: absolute;
+left: 0;
+right: 0;
+margin: 0 auto;
+top: 44px;
+}
+.trigger-btn {
+display: inline-block;
+margin: 100px auto;
+}  
+
+.pt-3-half {
+padding-top: 1.4rem;
+}
+.modal-dialog {
+width: 2000px;
+}
+/*search bar*/
+.searchbar{
+margin-bottom: auto;
+margin-top: auto;
+height: 60px;
+background-color: #353b48;
+border-radius: 30px;
+padding: 10px;
+}
+.search_input{
+color: white;
+border: 0;
+outline: 0;
+background: none;
+width: 0;
+line-height: 40px;
+transition: width 0.4s linear;
+}
+.searchbar:hover > .search_input{
+
+padding: 0 10px;
+width: 100px;
+transition: width 0.4s linear;
+}
+.searchbar:hover > .search_icon{
+background: white;
+color: #e74c3c;
+}
+.search_icon{
+height: 40px;
+width: 40px;
+float: right;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 50%;
+color: white;
+text-decoration:none;
+}
+.form-control{
+border-radius:1.5rem;
+height: 45px;
+width: 200px;
+}
+/*center everyhting*/
+.container {
+display: flex;
+justify-content: center;
+flex-direction: column;
+}

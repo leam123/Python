@@ -1,0 +1,132 @@
+{% block headerinclude %}
+    {% load static %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <link rel="stylesheet" href="{% static 'css/ABC.css' %}">
+
+    <style>
+        body {
+            font-family: Arial;
+            background-image: url('{% static "images/bg1.jpg" %}');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover; 
+        }
+    </style>
+{% endblock headerinclude %}
+
+{% block footerinclude %}
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+ 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.jqueryui.min.js"></script> -->
+ 
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+{% endblock footerinclude %}
+
+{% block content %}
+       <section id="nav-bar">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <img src="{% static 'images/abclogo.png' %}" height="50"; width="80";> 
+                    <a class="navbar-brand" href="#" style="color: #21D0B2; font-size: 20px; font-weight: bold; font-family:verdana; "><b>ABC Pharma</b></a>  
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index">Home <span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about" data-toggle="modal">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <!--<a class="nav-link" href="#contact">Contact Us</a>-->
+                            <a href="#contact" class="nav-link" data-toggle="modal">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+    
+        <div class="container register-form">
+            <div class="form">
+                <h1 style="text-align:center; height: 80px; background: #2F455C; color: #21D0B2; font-weight: bold; line-height: 80px; font-family:verdana;">ABC Pharma Automate</h1>
+                <br>
+                <form style="background: rgb(255,255,255);">
+                    <br>
+                        <h3 style="text-align:center; color:black; top: 20px;font-family:Arial;"> <b>Login Form</b></h3>
+                        <label for="uname"><b>Username</b></label>
+                            <input type="text" placeholder="Enter Username" name="uname" required>
+                        <label for="psw"><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="psw" required>                        
+                        <button type="submit">Login</button>
+                                <a href="registration">
+                                <!---{% csrf_token %} -->
+                                <button type="button" class="registerbtn">ADD CUSTOMER</button>
+                            </a>        
+                            <!---
+                            {% csrf_token %}
+                            <button type="button" class="registerbtn" method="POST">ADD CUSTOMER</button> --->
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal About Us -->
+        <div id="about" class="modal fade">
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span>&times;</span></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h4>ABC PHARMA</h4> 
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean                 pellentesque
+                            pellentesque dolor, malesuada maximus nulla egestas dictum. Nam tellus elit,
+                            placerat in dui vel, rutrum malesuada nunc. Maecenas et hendrerit mauris. Sed
+                            eget nulla at orci ultricies facilisis non a velit. Quisque et pellentesque nibh, ut
+                            pulvinar nibh. Etiam et urna bibendum, pretium ex sed, venenatis ante.
+                            Maecenas fringilla, odio vitae condimentum viverra, purus nibh dignissim mi,
+                            vel pellentesque urna tortor vitae leo. Vestibulum enim felis, finibus id iaculis
+                            at, gravida sed urna. Duis nec nisi lectus. Duis condimentum lobortis ipsum eu
+                            vulputate. Aenean nec lectus diam.</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!-- Modal Contact Us -->
+        <div id="contact" class="modal fade">
+            <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span>&times;</span></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h4>CONTACT US</h4> 
+                            
+                            <p style="text-align: left;"><b>Address:</b>Apas, Cebu City, Cebu<br>
+                               <b>Phone:</b>123 123 123<br>
+                               <b>Email:</b>abc_pharma@gmail.com
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>    
+{% endblock content %}

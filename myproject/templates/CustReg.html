@@ -1,0 +1,286 @@
+{% block headerinclude %}
+    {% load static %}
+    <title>Customer Registration</title>
+    <!--
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    -->
+
+    <link rel="stylesheet" href="{% static 'css/CustReg.css' %}">
+
+    <style>
+        body {
+            font-family: Arial;
+            background-image: url('{% static "images/bg1.jpg" %}');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            height:300vh;
+        }
+    </style>
+{% endblock headerinclude %}
+
+{% block footerinclude %}
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous" >
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function preview_image(event) {
+            var fileName = document.getElementById("profileImage").value;
+            var idxDot = fileName.lastIndexOf(".") + 1;
+            var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+            if (extFile=="jpg" || extFile=="jpeg" || extFile=="png"){
+                var reader = new FileReader();
+                reader.onload = function(){
+                    var output = document.getElementById('output_image');
+                    output.src = reader.result;
+                }
+                reader.readAsDataURL(event.target.files[0]);
+            }else{
+                alert("Sorry. Only jpg/jpeg and png files are allowed.");
+                document.getElementById("profileImage").value = "";
+            } 
+        }
+    </script>
+{% endblock footerinclude %}
+
+
+{% block content %}
+    <form id = "form1"action="" method="POST" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token%}
+        <div class="container register-form">
+            <div class="form">
+                <div class="note">
+                <p style="font-size: 35px; letter-spacing: 4px;"><b>CUSTOMER REGISTRATION</b></p>
+            </div>
+            </div>
+            <br>
+            <div class="form-content">
+                <h2 style="text-align:center; color: #2F455C; font-weight: bold; font-family:verdana;">PERSONAL INFORMATION</h2>
+                <BR>
+                <BR>
+                <BR>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="col-md-auto">
+                                <div class="input-group mb-3">
+                                    <label for="datereg" class="font col-sm-6 control-label"><b>Date Registered</b></label> <br>
+                                    <input type="date" id="id_datereg" name="dateRegistered" class="center form-control1" style="background-color: #E4E4E4; " readOnly>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label for="employeeId" class="font col-sm-4 control-label"><b>Employee ID</b></label>
+                                    <input type="text" id="id_employeeId" name="employeeId" name="employeeId" maxlength="4" size="4" class="center form-control1" style="background-color: #E4E4E4;" readonly>
+                                </div>
+                                <br>
+                                <h2 style="text-align:left; color: #2F455C; font-weight: bold; font-family:verdana;">Basic Information</h2>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="col">
+                            <div class="col-md-auto">
+                                <div class="topright">
+                                    <div class="preview">
+                                        <img id="output_image">
+                                    </div>
+                                    <input type="file" id="profileImage" name="profileImage" accept=".jpg,.jpeg,.png" onchange="preview_image(event)" required/>
+                                     <!--   <input type="file" name="img" id="id-img" required> <br><br>
+                                            <input type="submit" value="Upload Image" name="submit">    -->
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <br>
+                    <div class="row">
+                        <div class="col">
+                            <div class="col-md-auto">
+                                <div class="input-group mb-3">
+                                    <label for="fname" class="font col-sm-4 control-label"><b>First Name</b></label>
+                                    <input type="text" id="id_fname" placeholder="Kendall" name="firstName" class="center form-control1" value="John" required>
+                                </div>  
+                                <div class="input-group mb-3">
+                                    <label for="mname" class="font col-sm-4 control-label"><b>Middle Name</b></label>
+                                    <input type="text" id="id_mname" placeholder="Kardashian" name="middleName" class="center form-control1" value="Peterson" required>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label for="lname" class="font col-sm-4 control-label"><b>Last Name</b></label>
+                                    <input type="text" id="id_mname" placeholder="Kardashian" name="lastName" class="center form-control1" value="Doe" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <br><br><br><br>
+                        <div class="col">
+                            <div class="col-md-auto">
+                                <div class="input-group mb-3">
+                                    <label for="birthdate" class="font col-sm-4 control-label"><br><b>Birth Date</b></label>
+                                    <input type="date" id="id_bday" name="birthdate" autocomplete="off" >
+                                    <br>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label for="status" class="font col-sm-4 control-label"> Status :</label>
+                                        <select name="status" id="id_status" style="height: 40px; width: 150px;">
+                                            <option value="single">Single</option>
+                                            <option value="married">Married</option>
+                                            <option value="widow">Widow/er</option>
+                                            <option value="divorced">Divorced</option>
+                                        </select>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label for="gender" class="font col-sm-4 control-label" style="height: 40px; width: 150px;"><b>Gender :</b></label>
+                                            <select name = "gender" id = "gender">
+                                                <option value = "Married">Male</option>
+                                                <option value = "Single">Female</option>
+                                            </select>
+                                        
+                                    <!--
+                                        <input type="radio" id="id_male" name="gender" value="male"> &nbsp
+                                            <label for="male"><b>Male</b></label> &nbsp&nbsp
+                                        <input type="radio" id="id_female" name="gender" value="female"> &nbsp
+                                            <label for="female"><b>Female</b></label> &nbsp&nbsp
+                                        <input type="radio" id="id_other" name="gender" value="other"> &nbsp
+                                            <label for="other"><b>Other</b></label> &nbsp&nbsp
+                                    -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="col-md-auto">
+                                <div class="input-group mb-3">
+                                    <label for="street" class="font col-sm-4 control-label"><b>Street</b></label>
+                                    <input type="text" id="id_street" name="street"  class="center form-control1" value="A.S Fortuna St." required>
+                                </div>  
+                                <div class="input-group mb-3">
+                                    <label for="barangay" class="font col-sm-4 control-label"><b>Barangay</b></label>
+                                    <input type="text" id="id_barangay" name="barangay" class="center form-control1" value="Guadalupe" required>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label for="city" class="font col-sm-4 control-label"><b>City</b></label>
+                                    <input type="text" id="id_city" name="city" class="center form-control1" value="Cebu" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="col-md-auto">
+                                <div class="input-group mb-3">
+                                    <label for="province" class="font col-sm-4 control-label"><b>Province</b></label>
+                                    <input type="text" id="id_province" name="province"  class="center form-control1" value="Cebu" required>
+                                </div>  
+                                <div class="input-group mb-3">
+                                    <label for="zipcode" class="font col-sm-4 control-label"><b>Zip Code</b></label>
+                                    <input type="text" id="id_zipcode" name="zipcode" class="center form-control1" value="6000" required>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label for="country" class="font col-sm-4 control-label"><b>Country</b></label>
+                                    <input type="text" id="id_country" name="country" class="center form-control1" value="Philippines" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="row">
+                        <div class="col">
+                            <div class="col-md-auto">
+                                <div class="input-group mb-3">
+                                    <label for="mother" class="font col-sm-4 control-label"><b>Mother's Name</b></label>
+                                    <input type="text" id="id_mother" name="motherName"  class="center form-control1" value="Beca" required>
+                                </div>  
+                                <div class="input-group mb-3">
+                                    <label for="father" class="font col-sm-4 control-label"><b>Father's Name</b></label>
+                                    <input type="text" id="id_father" name="fatherName" class="center form-control1" value="Jacob" required>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label for="spouse" class="font col-sm-4 control-label"><b>Spouse's Name</b></label>
+                                    <input type="text" id="id_spouse" name="spouseName" class="center form-control1" value="Jane" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="col-md-auto">
+                                <div class="input-group mb-3">
+                                    <label for="occupation" class="font col-sm-4 control-label"><b>Occupation</b></label>
+                                    <input type="text" id="id_occupation" name="spouseOccupation"  class="center form-control1" value="Lawyer" required>
+                                </div>  
+                                <div class="input-group mb-3">
+                                    <label for="momoccupation" class="font col-sm-4 control-label"><b>Occupation</b></label>
+                                    <input type="text" id="id_momoccupation" name="motherOccupation" class="center form-control1" value="Doctor" required>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label for="dadoccupation" class="font col-sm-4 control-label"><b>Occupation</b></label>
+                                    <input type="text" id="id_dadoccupation" name="fatherOccupation" class="center form-control1" value="Data Analyst" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                <br>
+                
+                    <div class="row">
+                        <div class="col">
+                            <div class="col-md-auto">
+                                <div class="input-group mb-3">
+                                    <label for="children" class="font col-sm-4 control-label"><b>No. of Children</b></label>
+                                    <input type="children" id="id_children" name="noChildren"  maxlength="2" size="2" class="center form-control1"value="2" required>
+                                </div>  
+                                
+                                <div class="input-group mb-3">
+                                    <label for="height" class="font col-sm-4 control-label"><b>Height (meters)</b></label>
+                                    <input type="height" id="id_spouse" name="height" class="center form-control1" maxlength="2" size="2" value="1.75" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="col-md-auto">
+                                <div class="input-group mb-3">
+                                    <label for="religion" class="font col-sm-4 control-label"><b>Religion</b></label>
+                                    <input type="religion" id="id_religion" name="religion" class="center form-control1" value="Roman Catholic" required>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label for="weight" class="font col-sm-4 control-label"><b>Weight (kg)</b></label>
+                                    <input type="weight" id="id_weight" name="weight"  class="center form-control1" maxlength="2" size="2" value="65" required>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>  
+        <div class="container">
+            <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+            <button type="button" onclick="location.href='{% url "pharmacy:landing_index_view" %}'" class="btn btn-secondary btn-lg btn-block">Cancel</button>
+        </div>
+    </form>
+{% endblock content %}        

@@ -1,0 +1,276 @@
+
+{% block headerinclude %}
+	{% load static %}
+	<title>Medicine Registration</title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="{% static 'css/medicine_registration.css' %}">
+
+	<style>
+		body {
+			/*background-color: #90AFAF;*/
+			background-image: url('{% static "images/bg1.jpg" %}');
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	</style>
+{% endblock headerinclude %}
+
+{% block footerinclude %}
+
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+	<script type="text/javascript" src="{% static 'js/medicine_registration.js'%}"></script>
+{% endblock footerinclude %}
+
+{% block content %}
+	<div class="container register-form">
+		{% include 'messages.html' %}
+        <div class="form">
+            <div class="note">
+                <p style="font-size: 35px; letter-spacing: 4px;"><b>MEDICINE REGISTRATION</b></p>
+            </div>
+		</div>
+		<div class="form-content">
+			<form method='POST' action="" enctype="multipart/form-data" oninput="sku.value = category.value.charAt(0) + genericName.value.charAt(0) + commonBrand.value.charAt(0) + size.value + '-' + number.value">
+                {% csrf_token %}
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<!-- Date Registered -->
+								<div class="col-md-auto">
+									<div class="input-group mb-3">
+										<label class="font col-sm-4 control-label">Date Registered</label>
+										<input type="date" id="dateRegistered" name="dateRegistered" class="center form-control1" style="background-color: #E4E4E4;" readonly>
+									</div>
+								</div>
+							</div>
+						<div class="col-auto"> </div>
+						<div class="col"></div>
+					  </div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<!-- Category -->
+								<div class="col-md-auto">
+									<div class="input-group mb-3">
+										<label class="font col-sm-4 control-label">Category</label>
+										<select class="form-control1" id="category" name="category" required>
+											<option value=""> ----------- </option>
+											<option value="Analgesics"> Analgesics </option>
+											<option value="Antacids"> Antacids </option>
+											<option value="Antianxiety Drugs"> Antianxiety Drugs </option>
+											<option value="Antiarrhythmics"> Antiarrhythmics </option>
+											<option value="Antibacterials"> Antibacterials </option>
+											<option value="Antibiotics"> Antibiotics </option>
+											<option value="Anticoagulants and Thrombolytics"> Anticoagulants and Thrombolytics </option>
+											<option value="Anticonvulsants"> Anticonvulsants </option>
+											<option value="Antidepressants"> Antidepressants </option>
+											<option value="Antidiarrheals"> Antidiarrheals </option>
+											<option value="Antiemetics"> Antiemetics </option>
+											<option value="Antifungals"> Antifungals </option>
+											<option value="Antihistamines"> Antihistamines </option>
+											<option value="Antihypertensives"> Antihypertensives </option>
+											<option value="Anti-Inflammatories"> Anti-Inflammatories </option>
+											<option value="Antineoplastics"> Antineoplastics </option>
+											<option value="Antipsychotics"> Antipsychotics </option>
+											<option value="Antipyretics"> Antipyretics </option>
+											<option value="Antivirals"> Antivirals </option>
+											<option value="Barbiturates"> Barbiturates </option>
+											<option value="Beta-Blockers"> Beta-Blockers </option>
+											<option value="Bronchodilators"> Bronchodilators </option>
+											<option value="Cold Cures"> Cold Cures </option>
+											<option value="Corticosteroids"> Corticosteroids </option>
+											<option value="Cough Suppressants"> Cough Suppressants </option>
+											<option value="Cytotoxics"> Cytotoxics </option>
+											<option value="Decongestants"> Decongestants </option>
+											<option value="Diuretics"> Diuretics </option>
+											<option value="Expectorant"> Expectorant </option>
+											<option value="Hormones"> Hormones </option>
+											<option value="Hypoglycemics (Oral)"> Hypoglycemics (Oral) </option>
+											<option value="Immunosuppressives"> Immunosuppressives </option>
+											<option value="Laxatives"> Laxatives </option>
+											<option value="Muscle Relaxants"> Muscle Relaxants </option>
+											<option value="Sedatives"> Sedatives </option>
+											<option value="Sex Hormones (Female)"> Sex Hormones (Female) </option>
+											<option value="Sex Hormones (Male)"> Sex Hormones (Male) </option>
+											<option value="Sleeping Drugs"> Sleeping Drugs </option>
+											<option value="Tranquilizer"> Tranquilizer </option>
+											<option value="Vitamins"> Vitamins </option>
+										</select>
+									</div>
+								</div>	
+							</div>
+								<!-- <div class="col"></div> -->
+							<div class="col-auto"> </div>
+							<div class="col">
+								<div class="col-md-auto">
+									<div class="input-group mb-3">
+										<input type="hidden" id="sku" name="sku" class="center sku-style form-control1"> 
+									</div>
+								</div>	
+							</div>
+					  	</div>
+					</div>
+					 <!--<div class="col-auto"> </div>
+						<div class="col">
+							<div class="col-md-auto">
+								<div class="input-group mb-3">
+									<label class="font col-sm-3 control-label">SKU</label>
+									<input type="text" id="sku" name="sku" class="center sku-style form-control1"> 
+								</div>
+							</div>	
+						</div>-->
+					<div class="container">
+					  	<div class="row">
+							<div class="col">
+								<!-- Generic Name -->
+								<div class="col-md-auto">
+									<div class="input-group mb-3">
+										<label class="font col-sm-4 control-label">Generic Name</label>
+										<input type="text" id="genericName" name="genericName" class="form-control1" maxlength="20" value="Ascorbic Acid" required>
+									</div>
+								</div>
+							</div>
+							<div class="col-auto"> </div>
+							<div class="col">
+								<!-- Common Brand -->
+								<div class="col-md-auto">
+									<div class="input-group mb-3">
+										<label class="font col-sm-3 control-label">Common Brand</label>
+										<input type="text" id="commonBrand" name="commonBrand" class="form-control1" maxlength="20" value="Ceelin" required>
+									</div>
+								</div>
+							</div>
+					  	</div>
+					</div><!-- end container -->
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<!-- Manufactured Date -->
+								<div class="col-md-auto">
+									<div class="input-group mb-3">
+										<label class="font col-sm-4 control-label">Manufactured Date</label>
+										<input type="date" id="manufacturedDate" name="manufacturedDate" class="center form-control1" required>
+									</div>
+								</div>
+							</div>
+							<div class="col-auto"> </div>
+							<div class="col">
+								<!-- Expiry Date -->
+								<div class="col-md-auto">
+									<div class="input-group mb-3">
+										<label  class="font col-sm-3 control-label">Expiry Date </label>
+										<input type="date" id="expiryDate" name="expiryDate" class="center form-control1" required>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> <!-- end container -->
+					<br>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-4">
+							<!-- Size(Contents) -->
+							<div class="col-md-auto">
+								<div class="input-group mb-3">
+									<label class="font col-sm-3 control-label">Size</label>
+									<input type="number" id="size" name="size" class="form-control" min="5" max="500" onkeydown="javascript: return event.keyCode === 8 || event.keyCode === 46 ? true : !isNaN(Number(event.key))" value="10" required>
+									<div class="input-group-prepend">
+										<span class="input-group-text">ml</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<!-- Price -->
+							<div class="col-md-auto">
+								<div class="input-group mb-3">
+								  <label class="font col-sm-3 control-label">Price</label>
+									<div class="input-group-prepend">
+										<span class="input-group-text">Php</span>
+									</div>
+										<input type="number" id="price" name="price" class="form-control" min="5" max="500.99" step="0.01" value="50.75" required>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<!-- No. of items -->
+							<div class="col-md-auto">
+								<div class="input-group mb-3">
+								  <label class="font col-sm-4 control-label">No. of Items</label>
+										<input type="number" id="number" name="number" min="1" max="500" class="form-control" onkeydown="javascript: return event.keyCode === 8 || event.keyCode === 46 ? true : !isNaN(Number(event.key))" value="50" required>
+								</div>
+							</div>
+						</div>
+					</div><!-- end row -->
+					<br>
+					<div class="container">
+						<div class="row">
+							<!-- How to Use -->  
+							<div class="col">
+								<label class="font col-sm-3 control-label">How to Use</label>
+							</div>
+							<!-- Side Effects -->
+							<div class="col">
+								<label class="font col-sm-3 control-label">Side Effects</label>
+							</div>
+							<div class="w-100"></div>
+							<div class="col">
+								<textarea class="form-control3" id="use" name="use" maxlength="150" required>
+									Drink with Water.
+									Drink every after meal.
+									Consume properly.
+								</textarea>
+							</div>
+							<div class="col">
+								<textarea class="form-control3" id="effects" name="effects" maxlength="150" required>
+									nausea
+									vomiting
+									heartburn
+									stomach cramps
+									headache
+								</textarea>
+							</div>
+						</div>
+					</div><br> <!-- end container -->
+					<!-- IMAGES -->
+					<div class="container">
+						<div class="row">
+							<div class="col-md-auto">
+								<div class="col-sm">
+									<div class="preview">
+										<img id="output_image1">
+									</div>
+									<input type="file" name="image1" id="image1" accept=".jpg,.jpeg,.png" onchange="preview_image1(event)">
+								</div>
+							</div>
+							<div class="col-sm">
+								<div class="preview">
+									<img id="output_image2">	
+								</div>
+								<input type="file" name="image2" id="image2" accept=".jpg,.jpeg,.png" onchange="preview_image2(event)">
+							</div>
+							<div class="col-md-auto">
+								<div class="col-sm">
+									<div class="preview">
+										<img id="output_image3">
+									</div>
+									<input type="file" name="image3" id="image3" accept=".jpg,.jpeg,.png" onchange="preview_image3(event)">
+								</div>
+							</div>
+						</div>
+					</div> <!-- end container -->
+					<br><br>
+					<button type="submit" class="btnDesign btn-primary float-right">Submit</button>
+                	<button type="button" onclick="location.href='{% url "pharmacy:dashboard_view" %}'" class="btnDesign btn-secondary float-right">Cancel</button>
+            	</div> <!-- end container -->
+            </form>
+        </div> <!-- end form content -->
+    </div><!-- end container register-form -->
+{% endblock content %}
